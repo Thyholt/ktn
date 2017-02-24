@@ -1,0 +1,6 @@
+[0222/140433:ERROR:crash_report_database_win.cc(562)] CreateDirectory C:\Program Files (x86)\Jarhair\Reports\Dump: Systemet finner ikke angitt bane. (0x3)
+[0222/140433:ERROR:registration_protocol_win.cc(82)] TransactNamedPipe: Datakanalen er avsluttet. (0x6D)
+[0222/140433:ERROR:crash_report_database_win.cc(562)] CreateDirectory C:\Program Files (x86)\Jarhair\Reports\Dump: Systemet finner ikke angitt bane. (0x3)
+[0222/143220:ERROR:crash_report_database_win.cc(562)] CreateDirectory C:\Program Files (x86)\Jarhair\Reports\Dump: Systemet finner ikke angitt bane. (0x3)
+[0222/143220:ERROR:registration_protocol_win.cc(82)] TransactNamedPipe: Datakanalen er avsluttet. (0x6D)
+[0222/143220:ERROR:crash_report_database_win.cc(562)] CreateDirectory C:\Program Files (x86)\Jarhair\Reports\Dump: Systemet finner ikke angitt bane. (0x3)
