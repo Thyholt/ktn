@@ -25,18 +25,21 @@ class Client:
                     text.append('')
                 if(text[0] == 'login'):
                     payload=json.dumps({'request': 'login', 'content': text[1]})
-                    self.send_payload(payload)
+                    self.TX_payload(payload)
+                elif(text[0] == 'msg'):
+                    payload=json.dumps({'request': 'msg', 'content': text[1]})
+                    self.TX_payload(payload)
                 elif(text[0] == 'logout'):
                     self.disconnect()
                 elif(text[0] == 'names'):
                     payload=json.dumps({'request': 'names'})
-                    self.send_payload(payload)
+                    self.TX_payload(payload)
                 elif(text[0] == 'help'):
                     payload=json.dumps({'request': 'help'})
-                    self.send_payload(payload)
-                elif(text[0] == 'msg'):
-                    payload=json.dumps({'request': 'msg', 'content': text[1]})
-                    self.send_payload(payload)
+                    self.TX_payload(payload)
+                elif(text[0] == 'history'):
+                    payload=json.dumps({'request': 'history'})
+                    self.TX_payload(payload)
                 else:
                     print('Unknown command, type "help" for help \n >', end='')
             else:
@@ -45,15 +48,15 @@ class Client:
 
     def disconnect(self):
         payload=json.dumps({'request': 'logout'})
-        self.send_payload(payload)
+        self.TX_payload(payload)
         sys.exit()
 
-    def receive_message(self, message):
+    def RX_message(self, message):
         parser = MessageParser()
         parsed_message = parser.parse(message)
         print(parsed_message,'\n> ',end='')
 
-    def send_payload(self, data):
+    def TX_payload(self, data):
         self.connection.send(bytes(data, 'UTF-8'))
 
 
@@ -64,5 +67,5 @@ if __name__ == '__main__':
     No alterations is necessary
     """
     connect_ip=input("Enter server ip to connect: ")
-    print('Type "login <username>" to log in')
+    print('Type "login <username>" to log in','\n> ',end='')
     client = Client(connect_ip, 9998)
