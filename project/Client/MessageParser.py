@@ -7,21 +7,24 @@ class MessageParser():
         self.possible_responses = {
             'error': self.parse_error,
             'info': self.parse_info,
-            'msg': self.parse_message,
+            'message': self.parse_message,
             'history': self.parse_history
         }
 
     def parse(self, payload):
-        if payload['response'] in self.possible_responses:
-            return self.possible_responses[payload['response']](payload)
-        else:
-            return "Response not valid"
+        try:
+            if payload['response'] in self.possible_responses:
+                return self.possible_responses[payload['response']](payload)
+            else:
+                return "Response not valid"
+        except Exception as e:
+            print("")
 
     def parse_error(self, payload):
-        return "[Error]" + payload['content']
+        return "[Error]" + str(payload['content'])
 
     def parse_info(self, payload):
-        return "[Info] " + payload['content']
+        return "[Info] " + str(payload['content'])
 
     def parse_message(self, payload):
         return "[" + str(payload["timestamp"]) + " - " + str(payload['sender']) + "] " + str(payload["content"]) 
