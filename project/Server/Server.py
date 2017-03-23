@@ -22,9 +22,10 @@ class ClientHandler(SocketServer.BaseRequestHandler):
 
         while True:
             try:
-                recv_msg = json.loads(self.connection.recv_msg(4096).decode('utf-8'))
+                recv_msg = json.loads(self.connection.recv(4096).decode('utf-8'))
             except Exception as e:
-                #self.logout(False)
+                self.logout(False)
+                #print(e)
                 break
             if(len(recv_msg['request'])):
                 self.possible_requests[recv_msg['request']](recv_msg)
